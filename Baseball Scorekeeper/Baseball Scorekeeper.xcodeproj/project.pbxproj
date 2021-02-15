@@ -10,6 +10,9 @@
 		502EE47F25D9ABCA00796759 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502EE47E25D9ABCA00796759 /* TabBarVC.swift */; };
 		502EE48325D9ACA600796759 /* GameViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502EE48225D9ACA600796759 /* GameViewVC.swift */; };
 		502EE48625DA294F00796759 /* ScoreboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502EE48525DA294F00796759 /* ScoreboardView.swift */; };
+		502EE48925DA973200796759 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502EE48825DA973200796759 /* Player.swift */; };
+		502EE48C25DA9C0300796759 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502EE48B25DA9C0300796759 /* Team.swift */; };
+		502EE49025DAA31500796759 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502EE48F25DAA31500796759 /* GameState.swift */; };
 		50436A7F25C1FF28005A4B89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50436A7E25C1FF28005A4B89 /* AppDelegate.swift */; };
 		50436A8125C1FF28005A4B89 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50436A8025C1FF28005A4B89 /* SceneDelegate.swift */; };
 		50436A8325C1FF28005A4B89 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50436A8225C1FF28005A4B89 /* ViewController.swift */; };
@@ -21,6 +24,9 @@
 		502EE47E25D9ABCA00796759 /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
 		502EE48225D9ACA600796759 /* GameViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewVC.swift; sourceTree = "<group>"; };
 		502EE48525DA294F00796759 /* ScoreboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardView.swift; sourceTree = "<group>"; };
+		502EE48825DA973200796759 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		502EE48B25DA9C0300796759 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		502EE48F25DAA31500796759 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		50436A7B25C1FF28005A4B89 /* Baseball Scorekeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Baseball Scorekeeper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50436A7E25C1FF28005A4B89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50436A8025C1FF28005A4B89 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +67,9 @@
 		502EE47D25D9AB6800796759 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				502EE48825DA973200796759 /* Player.swift */,
+				502EE48B25DA9C0300796759 /* Team.swift */,
+				502EE48F25DAA31500796759 /* GameState.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -170,6 +179,9 @@
 				50436A7F25C1FF28005A4B89 /* AppDelegate.swift in Sources */,
 				502EE47F25D9ABCA00796759 /* TabBarVC.swift in Sources */,
 				50436A8125C1FF28005A4B89 /* SceneDelegate.swift in Sources */,
+				502EE48C25DA9C0300796759 /* Team.swift in Sources */,
+				502EE48925DA973200796759 /* Player.swift in Sources */,
+				502EE49025DAA31500796759 /* GameState.swift in Sources */,
 				502EE48625DA294F00796759 /* ScoreboardView.swift in Sources */,
 				502EE48325D9ACA600796759 /* GameViewVC.swift in Sources */,
 			);
