@@ -12,18 +12,18 @@ class GameViewVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red
+        setupScoreboard()
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setupScoreboard(){
+        let scoreBoard = ScoreboardView()
+        self.view.addSubview(scoreBoard)
+        scoreBoard.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        scoreBoard.widthAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.widthAnchor, multiplier: 1.0).isActive = true
+        scoreBoard.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        
     }
-    */
+    
 
 }
