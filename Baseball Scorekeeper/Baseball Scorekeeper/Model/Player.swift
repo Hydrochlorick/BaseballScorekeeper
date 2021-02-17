@@ -47,4 +47,14 @@ class Player {
         self.position = position
     }
 
+class Pitcher: Player {
+    var pitchCount: Int = 0
+    var strikeOutCount: Int = 0
+    
+    override init(firstName: String, lastName: String, team: String, position: FieldingPosition = .pitcher) {
+        super.init(firstName: firstName, lastName: lastName, team: team, position: position)
+    }
+    
+}
+
 }
