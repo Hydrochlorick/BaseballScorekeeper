@@ -28,7 +28,11 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate {
         let gameNavController = UINavigationController(rootViewController: gameView)
         gameView.tabBarItem = UITabBarItem(title: "Game", image: UIImage(systemName: "house"), tag: 0)
         
-        viewControllers = [gameNavController]
+        let recordView = RecordTableVC()
+        let recordNavController = UINavigationController(rootViewController: recordView)
+        recordView.tabBarItem = UITabBarItem(title: "Record", image: UIImage(systemName: "list.bullet"), tag: 1)
+        
+        viewControllers = [gameNavController, recordNavController]
     }
 
     /*

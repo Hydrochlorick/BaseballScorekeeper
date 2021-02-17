@@ -11,9 +11,10 @@ class GameViewVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // TODO: Change the color once everything's all set
         view.backgroundColor = .red
         setupScoreboard()
-        // Do any additional setup after loading the view.
     }
     
     func setupScoreboard(){
