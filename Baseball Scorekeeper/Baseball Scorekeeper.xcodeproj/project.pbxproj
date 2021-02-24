@@ -36,6 +36,7 @@
 		50436A8725C1FF2A005A4B89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50436A8A25C1FF2A005A4B89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		50436A8C25C1FF2A005A4B89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9148C47B25E6E123009A847B /* gameLogicPrototype.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = gameLogicPrototype.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +98,7 @@
 		50436A7D25C1FF28005A4B89 /* Baseball Scorekeeper */ = {
 			isa = PBXGroup;
 			children = (
+				9148C47B25E6E123009A847B /* gameLogicPrototype.md */,
 				502EE47D25D9AB6800796759 /* Model */,
 				502EE47C25D9AB5700796759 /* View */,
 				502EE47B25D9AB4B00796759 /* Controller */,
