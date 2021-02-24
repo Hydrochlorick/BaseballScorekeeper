@@ -10,6 +10,12 @@ import Foundation
 enum Inning: String {
     case topFirst = "Fuck this is gonna be tedious"
     case bottomFirst = "Also gotta decide"
+    case topSecond
+    case bottomwSecond
+    case topThird
+    case bottomThird
+    case topFourth
+    case bottomFourth
 }
 
 struct GameState {
