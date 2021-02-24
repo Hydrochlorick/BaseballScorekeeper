@@ -68,6 +68,12 @@ class ScoreboardView: UIView {
         self.backgroundColor = .white
         
         self.addSubview(scoreboardStack)
+        scoreboardStack.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        scoreboardStack.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1.0).isActive = true
+        scoreboardStack.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        scoreboardStack.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 1.0).isActive = true
+        
+        
         scoreboardStack.addArrangedSubview(homeLabel)
         scoreboardStack.addArrangedSubview(homeScore)
         scoreboardStack.addArrangedSubview(awayScore)
