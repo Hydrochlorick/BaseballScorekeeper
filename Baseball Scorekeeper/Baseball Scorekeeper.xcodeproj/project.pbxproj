@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50209F1F25EB3DB2002C5C65 /* AtBatStatBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50209F1E25EB3DB2002C5C65 /* AtBatStatBoardView.swift */; };
 		502EE47F25D9ABCA00796759 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502EE47E25D9ABCA00796759 /* TabBarVC.swift */; };
 		502EE48325D9ACA600796759 /* GameViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502EE48225D9ACA600796759 /* GameViewVC.swift */; };
 		502EE48625DA294F00796759 /* ScoreboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502EE48525DA294F00796759 /* ScoreboardView.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		50209F1E25EB3DB2002C5C65 /* AtBatStatBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtBatStatBoardView.swift; sourceTree = "<group>"; };
 		502EE47E25D9ABCA00796759 /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
 		502EE48225D9ACA600796759 /* GameViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewVC.swift; sourceTree = "<group>"; };
 		502EE48525DA294F00796759 /* ScoreboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardView.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				502EE48525DA294F00796759 /* ScoreboardView.swift */,
+				50209F1E25EB3DB2002C5C65 /* AtBatStatBoardView.swift */,
 				503B8AE225DB3A70000A941F /* RecordCell.swift */,
 			);
 			path = View;
@@ -180,6 +183,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50209F1F25EB3DB2002C5C65 /* AtBatStatBoardView.swift in Sources */,
 				50436A7F25C1FF28005A4B89 /* AppDelegate.swift in Sources */,
 				502EE47F25D9ABCA00796759 /* TabBarVC.swift in Sources */,
 				503B8AE025DB390D000A941F /* RecordTableVC.swift in Sources */,

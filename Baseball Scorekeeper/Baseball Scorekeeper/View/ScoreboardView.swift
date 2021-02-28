@@ -20,16 +20,16 @@ class ScoreboardView: UIView {
     
     let homeLabel : UILabel = {
         let homeLabel = UILabel()
-        homeLabel.textColor = .darkGray
+        homeLabel.textColor = UIColor(named: "offWhite")
         homeLabel.font = UIFont(name: "Helvetica-Bold", size: 30)
-        homeLabel.text = "HOME"
+        homeLabel.text = "Home"
         homeLabel.translatesAutoresizingMaskIntoConstraints = false
         return homeLabel
     }()
     
     let homeScore : UILabel = {
         let homeScore = UILabel()
-        homeScore.textColor = .darkGray
+        homeScore.textColor = UIColor(named: "offWhite")
         homeScore.font = UIFont(name: "Helvetica-Bold", size: 40)
         homeScore.text = "0"
         homeScore.translatesAutoresizingMaskIntoConstraints = false
@@ -38,7 +38,7 @@ class ScoreboardView: UIView {
     
     let awayScore : UILabel = {
         let awayScore = UILabel()
-        awayScore.textColor = .darkGray
+        awayScore.textColor = UIColor(named: "offWhite")
         awayScore.font = UIFont(name: "Helvetica-Bold", size: 40)
         awayScore.text = "0"
         awayScore.translatesAutoresizingMaskIntoConstraints = false
@@ -47,9 +47,9 @@ class ScoreboardView: UIView {
     
     let awayLabel : UILabel = {
         let awayLabel = UILabel()
-        awayLabel.textColor = .darkGray
+        awayLabel.textColor = UIColor(named: "offWhite")
         awayLabel.font = UIFont(name: "Helvetica-Bold", size: 30)
-        awayLabel.text = "AWAY"
+        awayLabel.text = "Away"
         awayLabel.translatesAutoresizingMaskIntoConstraints = false
         return awayLabel
     }()
@@ -65,7 +65,7 @@ class ScoreboardView: UIView {
     
     private func setup(){
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.backgroundColor = .white
+        self.backgroundColor = .clear
         
         self.addSubview(scoreboardStack)
         scoreboardStack.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
