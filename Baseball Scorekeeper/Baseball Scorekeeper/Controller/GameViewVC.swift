@@ -13,7 +13,7 @@ class GameViewVC: UIViewController {
         super.viewDidLoad()
         
         // TODO: Change the color once everything's all set
-        view.backgroundColor = .red
+        view.backgroundColor = UIColor(named: "notTooBlack")
         setupScoreboard()
     }
     
