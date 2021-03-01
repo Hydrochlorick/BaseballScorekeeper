@@ -118,87 +118,102 @@ class GameViewVC: UIViewController {
         }
     }
     
-    func onBase() {
-        // OK So this has a bug. If you have someone on two bases, it will try to present both UIAlertControllers and give the following error:
-        // Scorekeeper[13072:13323548] [Presentation] Attempt to present <UIAlertController: 0x7ff05680cc00> on <Baseball_Scorekeeper.TabBarVC: 0x7ff05800fc00> (from <Baseball_Scorekeeper.GameViewVC: 0x7ff057209860>) which is already presenting <UIAlertController: 0x7ff055853600>.
-        
-        // I tried to chase it down with self.dismiss but that just instantly dismisses the controller. I also tried to change the logic around in how and when its called and yeah idk. If you can find a way to dismiss the alert between each one but still waiting for the option from the user, that would fix the bug
-        
-        if self.gameState.thirdBase {
-            self.manOnThird()
-        }
-        
-        if self.gameState.secondBase {
-            self.manOnSecond()
-        }
-        
-        if self.gameState.firstBase {
-            self.manOnFirst()
-        }
+    func setBatter(hit: Int) {
+        if hit == 1 {
+            gameState.firstBase = true
+        } else if hit == 2 {
+            gameState.secondBase = true
+        } else if hit == 3 {
+            gameState.thirdBase = true
+        } else {}
     }
     
-    func manOnFirst() {
-        let firstAlert = UIAlertController(title: "Man on First", message: "Where'd they end up", preferredStyle: .alert)
-        
-        firstAlert.addAction(UIAlertAction(title: "Still on First", style: .default, handler:nil))
-        
-        firstAlert.addAction(UIAlertAction(title: "To Second!", style: .default, handler: { action in
-            self.gameState.firstBase = false
-            self.gameState.secondBase = true
-        }))
-        
-        firstAlert.addAction(UIAlertAction(title: "To Third!", style: .default, handler: { action in
-            self.gameState.firstBase = false
-            self.gameState.thirdBase = true
-        }))
-        
-        firstAlert.addAction(UIAlertAction(title: "To Home!", style: .default, handler: { action in
-            self.gameState.firstBase = false
-            self.updateScore()
-        }))
-        
-        firstAlert.addAction(UIAlertAction(title: "They're Out!", style: .destructive, handler: { action in
-            self.gameState.firstBase = false
-            self.yerOut()
-        }))
-        
-        self.present(firstAlert, animated: false, completion: nil)
+    
+    func manOnFirst(hit: Int) {
+        // check if someone is on first
+        if gameState.firstBase {
+            let firstAlert = UIAlertController(title: "Man on First", message: "Where'd they end up", preferredStyle: .alert)
+            
+            firstAlert.addAction(UIAlertAction(title: "Still on First", style: .default, handler:nil))
+            
+            firstAlert.addAction(UIAlertAction(title: "To Second!", style: .default, handler: { action in
+                print("Setting firstbase to false because To Second was pressed")
+                self.gameState.firstBase = false
+                self.gameState.secondBase = true
+                self.setBatter(hit: hit)
+            }))
+            
+            firstAlert.addAction(UIAlertAction(title: "To Third!", style: .default, handler: { action in
+                print("Setting firstbase to false because To Third was pressed")
+                self.gameState.firstBase = false
+                self.gameState.thirdBase = true
+                self.setBatter(hit: hit)
+            }))
+            
+            firstAlert.addAction(UIAlertAction(title: "To Home!", style: .default, handler: { action in
+                print("Setting firstbase to false because To Home was pressed")
+                self.gameState.firstBase = false
+                self.updateScore()
+                self.setBatter(hit: hit)
+            }))
+            
+            firstAlert.addAction(UIAlertAction(title: "They're Out!", style: .destructive, handler: { action in
+                print("Seting first base to false because theyre out was pressed")
+                self.gameState.firstBase = false
+                self.yerOut()
+                self.setBatter(hit: hit)
+            }))
+            self.present(firstAlert, animated: false, completion: nil)
+        } else {self.setBatter(hit: hit)}
     }
     
-    func manOnSecond() {
-        let secondAlert = UIAlertController(title: "Man on Second", message: "Where'd they end up?", preferredStyle: .alert)
-        secondAlert.addAction(UIAlertAction(title: "Still on second", style: .default, handler: nil))
-        secondAlert.addAction(UIAlertAction(title: "To Third!", style: .default, handler: {action in
-            self.gameState.secondBase = false
-            self.gameState.thirdBase = true
-        }))
-        secondAlert.addAction(UIAlertAction(title: "To Home!", style: .default, handler: {action in
-            self.gameState.secondBase = false
-            self.updateScore()
-        }))
-        secondAlert.addAction(UIAlertAction(title: "They're out!", style: .destructive, handler: {action in
-            self.gameState.secondBase = false
-            self.yerOut()
-        }))
-        
-        self.present(secondAlert, animated: false, completion: nil)
+    func manOnSecond(hit: Int) {
+        // check if someone is on second first
+        if gameState.secondBase {
+            let secondAlert = UIAlertController(title: "Man on Second", message: "Where'd they end up?", preferredStyle: .alert)
+            secondAlert.addAction(UIAlertAction(title: "Still on second", style: .default, handler: { action in
+                self.manOnFirst(hit: hit)
+            }))
+            secondAlert.addAction(UIAlertAction(title: "To Third!", style: .default, handler: {action in
+                self.gameState.secondBase = false
+                self.gameState.thirdBase = true
+                self.manOnFirst(hit: hit)
+            }))
+            secondAlert.addAction(UIAlertAction(title: "To Home!", style: .default, handler: {action in
+                self.gameState.secondBase = false
+                self.updateScore()
+                self.manOnFirst(hit: hit)
+            }))
+            secondAlert.addAction(UIAlertAction(title: "They're out!", style: .destructive, handler: {action in
+                self.gameState.secondBase = false
+                self.yerOut()
+                self.manOnFirst(hit: hit)
+            }))
+            
+            self.present(secondAlert, animated: false, completion: nil)
+        }else{manOnFirst(hit: hit)}
     }
     
-    func manOnThird() {
-        let thirdAlert = UIAlertController(title: "Man On Third", message: "Did they make it Home?", preferredStyle: .alert)
-        thirdAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
-            self.updateScore()
-            self.gameState.thirdBase = false
-        }))
-        thirdAlert.addAction(UIAlertAction(title: "Nope", style: .default, handler: nil))
-        
-        thirdAlert.addAction(UIAlertAction(title: "They're out", style: .default, handler: { action in
-            self.gameState.thirdBase = false
-            self.yerOut()
-        }))
-        self.present(thirdAlert, animated: false, completion: nil)
-        
-        
+    func manOnThird(hit: Int) {
+        // check if someone is on third first
+        if gameState.thirdBase {
+            let thirdAlert = UIAlertController(title: "Man On Third", message: "Did they make it Home?", preferredStyle: .alert)
+            thirdAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+                self.updateScore()
+                self.gameState.thirdBase = false
+                self.manOnSecond(hit: hit)
+            }))
+            thirdAlert.addAction(UIAlertAction(title: "Nope", style: .default, handler: { action in
+                self.manOnSecond(hit: hit)
+            }))
+            
+            thirdAlert.addAction(UIAlertAction(title: "They're out", style: .default, handler: { action in
+                self.gameState.thirdBase = false
+                self.yerOut()
+                self.manOnSecond(hit: hit)
+            }))
+            self.present(thirdAlert, animated: false, completion: nil)
+        } else{manOnSecond(hit: hit)}
     }
     
     // BUTTON THINGS
@@ -244,27 +259,25 @@ class GameViewVC: UIViewController {
         yerOut()
     }
     
+    
     @objc func hitAction() {
         let alert = UIAlertController(title: "Hit!", message: "Where did they end up?", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Single", style: .default, handler: { action in
             print("SINGLE")
-            self.onBase()
-            self.gameState.firstBase = true
+            self.manOnThird(hit: 1)
         }))
         alert.addAction(UIAlertAction(title: "Double", style: .default, handler: { action in
             print("DOUBLE")
-            self.onBase()
-            self.gameState.secondBase = true
+            self.manOnThird(hit: 2)
         }))
         alert.addAction(UIAlertAction(title: "Triple", style: .default, handler: { action in
             print("TRIPLE")
-            self.onBase()
-            self.gameState.thirdBase = true
+            self.manOnThird(hit: 3)
             
         }))
         alert.addAction(UIAlertAction(title: "Homerun!", style: .default, handler: { action in
             print("HOMERUN")
-            self.onBase()
+            self.manOnThird(hit: 4)
             self.updateScore()
         }))
         self.present(alert, animated: false, completion: nil)
