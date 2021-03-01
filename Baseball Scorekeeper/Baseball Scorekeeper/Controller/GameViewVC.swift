@@ -12,6 +12,38 @@ class GameViewVC: UIViewController {
     let scoreBoard = ScoreboardView()
     let statBoard = AtBatStatBoardView()
     let buttonStack = ButtonStackView()
+    
+    let diamondBanana: UIImageView = {
+        let diamondImage = UIImageView()
+        diamondImage.translatesAutoresizingMaskIntoConstraints = false
+        diamondImage.contentMode = .scaleAspectFit
+        diamondImage.image = UIImage(named: "")
+        return diamondImage
+    }()
+    
+    let firstBaseBanana: UIImageView = {
+        let diamondImage = UIImageView()
+        diamondImage.translatesAutoresizingMaskIntoConstraints = false
+        diamondImage.contentMode = .scaleAspectFit
+        diamondImage.image = UIImage(named: "")
+        return diamondImage
+    }()
+    
+    let secondBaseBanana: UIImageView = {
+        let diamondImage = UIImageView()
+        diamondImage.translatesAutoresizingMaskIntoConstraints = false
+        diamondImage.contentMode = .scaleAspectFit
+        diamondImage.image = UIImage(named: "")
+        return diamondImage
+    }()
+    
+    let thirdBaseBanana: UIImageView = {
+        let diamondImage = UIImageView()
+        diamondImage.translatesAutoresizingMaskIntoConstraints = false
+        diamondImage.contentMode = .scaleAspectFit
+        diamondImage.image = UIImage(named: "")
+        return diamondImage
+    }()
 
     var gameState = GameState()
     
