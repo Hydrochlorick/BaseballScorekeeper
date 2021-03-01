@@ -89,6 +89,12 @@ class GameViewVC: UIViewController {
         // We need to update what inning is happening, perhaps in updateBoards()?
         // Set the current teams at bat score to red color? to indicate?
         
+//        if gameState.inning % 2 == 0 {
+//            var myString = "Bottom \(gameState.inning/2)"
+//        } else {
+//            var myString = "Top"
+//        }
+        
         updateBoards()
         
         if gameState.inning > 19 {
