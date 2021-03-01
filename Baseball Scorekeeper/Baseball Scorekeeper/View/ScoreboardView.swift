@@ -38,7 +38,7 @@ class ScoreboardView: UIView {
     
     let awayScore : UILabel = {
         let awayScore = UILabel()
-        awayScore.textColor = UIColor(named: "offWhite")
+        awayScore.textColor = UIColor(named: "orangeRed")
         awayScore.font = UIFont(name: "Helvetica-Bold", size: 40)
         awayScore.text = "0"
         awayScore.translatesAutoresizingMaskIntoConstraints = false

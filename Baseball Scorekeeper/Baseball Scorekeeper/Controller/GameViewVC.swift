@@ -101,12 +101,6 @@ class GameViewVC: UIViewController {
             diamondBanana.bottomAnchor.constraint(equalTo: buttonStack.topAnchor, constant: 5)
         ])
         
-//        diamondBanana.addSubview(firstBaseBanana)
-//        NSLayoutConstraint.activate([
-//            firstBaseBanana.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor)
-//        ])
-//        diamondBanana.addSubview(secondBaseBanana)
-//        diamondBanana.addSubview(thirdBaseBanana)
     }
     
     func clearDiamondSubviews() {
@@ -182,8 +176,12 @@ class GameViewVC: UIViewController {
         
         if gameState.inning % 2 == 0 {
             statBoard.inningLabel.text = "Bottom of the \(placeHolder)\(stTH)"
+            scoreBoard.homeScore.textColor = UIColor(named: "orangeRed")
+            scoreBoard.awayScore.textColor = UIColor(named: "offWhite")
         } else {
             statBoard.inningLabel.text = "Top of the \(placeHolder)\(stTH)"
+            scoreBoard.awayScore.textColor = UIColor(named: "orangeRed")
+            scoreBoard.homeScore.textColor = UIColor(named: "offWhite")
         }
         
         updateBoards()

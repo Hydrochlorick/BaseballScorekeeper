@@ -31,5 +31,7 @@ struct GameState {
     var thirdBase: Bool = false
     
     var displayInning:Int = 1
+    
+    var homeatBat: Bool = false
 
 }
