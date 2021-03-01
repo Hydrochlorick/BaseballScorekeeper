@@ -20,9 +20,14 @@ enum Inning: String {
 
 struct GameState {
     var inning: Int = 1
-    var ball: Int = 0
+    var balls: Int = 0
     var strikes: Int = 0
     var outs: Int = 0
     var homeScore: Int = 0
     var awayScore: Int = 0
+    
+    var firstBase: Bool = false
+    var secondBase: Bool = false
+    var thirdBase: Bool = false
+
 }

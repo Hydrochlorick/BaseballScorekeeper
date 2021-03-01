@@ -39,7 +39,7 @@ class AtBatStatBoardView: UIView {
     let bLabel : UILabel = {
         let label = UILabel()
         label.textColor = UIColor(named: "offWhite")
-        label.font = UIFont(name: "Helvetica-Bold", size: 9)
+        label.font = UIFont(name: "Helvetica-Bold", size: 13)
         label.text = "B"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -47,7 +47,7 @@ class AtBatStatBoardView: UIView {
     let ballNumber : UILabel = {
         let label = UILabel()
         label.textColor = UIColor(named: "offWhite")
-        label.font = UIFont(name: "Helvetica-Bold", size: 9)
+        label.font = UIFont(name: "Helvetica-Bold", size: 13)
         label.text = "0"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -65,7 +65,7 @@ class AtBatStatBoardView: UIView {
     let sLabel : UILabel = {
         let label = UILabel()
         label.textColor = UIColor(named: "offWhite")
-        label.font = UIFont(name: "Helvetica-Bold", size: 9)
+        label.font = UIFont(name: "Helvetica-Bold", size: 13)
         label.text = "S"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -73,7 +73,7 @@ class AtBatStatBoardView: UIView {
     let strikesNumber : UILabel = {
         let label = UILabel()
         label.textColor = UIColor(named: "offWhite")
-        label.font = UIFont(name: "Helvetica-Bold", size: 9)
+        label.font = UIFont(name: "Helvetica-Bold", size: 13)
         label.text = "0"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -90,7 +90,7 @@ class AtBatStatBoardView: UIView {
     let oLabel : UILabel = {
         let label = UILabel()
         label.textColor = UIColor(named: "offWhite")
-        label.font = UIFont(name: "Helvetica-Bold", size: 9)
+        label.font = UIFont(name: "Helvetica-Bold", size: 13)
         label.text = "O"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -98,7 +98,7 @@ class AtBatStatBoardView: UIView {
     let outsNumber : UILabel = {
         let label = UILabel()
         label.textColor = UIColor(named: "offWhite")
-        label.font = UIFont(name: "Helvetica-Bold", size: 9)
+        label.font = UIFont(name: "Helvetica-Bold", size: 13)
         label.text = "0"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
