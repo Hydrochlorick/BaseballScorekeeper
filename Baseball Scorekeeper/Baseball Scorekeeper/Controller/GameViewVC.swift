@@ -17,7 +17,7 @@ class GameViewVC: UIViewController {
         let diamondImage = UIImageView()
         diamondImage.translatesAutoresizingMaskIntoConstraints = false
         diamondImage.contentMode = .scaleAspectFit
-        diamondImage.image = UIImage(named: "")
+        diamondImage.image = UIImage(named: "diamond")
         return diamondImage
     }()
     
@@ -25,7 +25,7 @@ class GameViewVC: UIViewController {
         let diamondImage = UIImageView()
         diamondImage.translatesAutoresizingMaskIntoConstraints = false
         diamondImage.contentMode = .scaleAspectFit
-        diamondImage.image = UIImage(named: "")
+        diamondImage.image = UIImage(named: "firstBase")
         return diamondImage
     }()
     
@@ -33,7 +33,7 @@ class GameViewVC: UIViewController {
         let diamondImage = UIImageView()
         diamondImage.translatesAutoresizingMaskIntoConstraints = false
         diamondImage.contentMode = .scaleAspectFit
-        diamondImage.image = UIImage(named: "")
+        diamondImage.image = UIImage(named: "secondBase")
         return diamondImage
     }()
     
@@ -41,7 +41,7 @@ class GameViewVC: UIViewController {
         let diamondImage = UIImageView()
         diamondImage.translatesAutoresizingMaskIntoConstraints = false
         diamondImage.contentMode = .scaleAspectFit
-        diamondImage.image = UIImage(named: "")
+        diamondImage.image = UIImage(named: "thirdBase")
         return diamondImage
     }()
 
@@ -54,6 +54,7 @@ class GameViewVC: UIViewController {
         setupScoreboard()
         setupStatBoard()
         setupButtons()
+        setupDiamondImage()
     }
     
     func setupScoreboard() {
@@ -89,6 +90,23 @@ class GameViewVC: UIViewController {
         buttonStack.foulButton.addTarget(self, action: #selector(foulAction), for: .touchUpInside)
         buttonStack.outButton.addTarget(self, action: #selector(outAction), for: .touchUpInside)
         buttonStack.hitButton.addTarget(self, action: #selector(hitAction), for: .touchUpInside)
+    }
+    
+    func setupDiamondImage() {
+        self.view.addSubview(diamondBanana)
+        
+        NSLayoutConstraint.activate([
+            diamondBanana.widthAnchor.constraint(equalTo: self.view.layoutMarginsGuide.widthAnchor, multiplier: 1.0),
+            diamondBanana.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor),
+            diamondBanana.bottomAnchor.constraint(equalTo: buttonStack.topAnchor, constant: 5)
+        ])
+        
+        diamondBanana.addSubview(firstBaseBanana)
+        NSLayoutConstraint.activate([
+            firstBaseBanana.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor)
+        ])
+        diamondBanana.addSubview(secondBaseBanana)
+        diamondBanana.addSubview(thirdBaseBanana)
     }
     
     func updateBoards() {
