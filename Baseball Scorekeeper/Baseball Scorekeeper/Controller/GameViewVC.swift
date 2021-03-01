@@ -14,7 +14,7 @@ class GameViewVC: UIViewController {
     let buttonStack = ButtonStackView()
 
     var gameState = GameState()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -76,7 +76,6 @@ class GameViewVC: UIViewController {
     }
     
     func yerOut() {
-        resetAtBat()
         gameState.outs += 1
         
         if gameState.outs == 3 {
@@ -89,6 +88,7 @@ class GameViewVC: UIViewController {
         updateBoards()
     }
     
+    
     func updateScore(score: Int = 1) {
         if gameState.inning % 2 == 0 {
             gameState.homeScore += score
@@ -97,6 +97,35 @@ class GameViewVC: UIViewController {
             gameState.awayScore += score
             updateBoards()
         }
+    }
+    
+    func manOnSecond() {
+        let secondAlert = UIAlertController(title: "Man on Second", message: "Where'd they end up?", preferredStyle: .alert)
+        secondAlert.addAction(UIAlertAction(title: "Still on second", style: .default, handler: nil))
+        secondAlert.addAction(UIAlertAction(title: "To Third!", style: .default, handler: {action in
+            self.gameState.secondBase = false
+            self.gameState.thirdBase = true
+        }))
+        secondAlert.addAction(UIAlertAction(title: "To Home!", style: .default, handler: {action in
+            self.gameState.secondBase = false
+            self.updateScore()
+        }))
+        secondAlert.addAction(UIAlertAction(title: "They're out!", style: .destructive, handler: {action in
+            self.gameState.secondBase = false
+            self.yerOut()
+        }))
+        
+        self.present(secondAlert, animated: false, completion: nil)
+    }
+    
+    func manOnThird() {
+        let thirdAlert = UIAlertController(title: "Man On Third", message: "Did they make it Home?", preferredStyle: .alert)
+        thirdAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+            self.updateScore()
+            self.gameState.thirdBase = false
+        }))
+        thirdAlert.addAction(UIAlertAction(title: "Nope", style: .default, handler: nil))
+        self.present(thirdAlert, animated: false, completion: nil)
     }
     
     // BUTTON THINGS
@@ -123,6 +152,7 @@ class GameViewVC: UIViewController {
         gameState.strikes += 1
         if gameState.strikes == 3 {
             yerOut()
+            resetAtBat()
         }
         updateBoards()
     }
@@ -145,6 +175,12 @@ class GameViewVC: UIViewController {
         let alert = UIAlertController(title: "Hit!", message: "Where did they end up?", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Single", style: .default, handler: { action in
             print("SINGLE")
+            if self.gameState.thirdBase {
+                self.manOnThird()
+            }
+            if self.gameState.secondBase {
+                self.manOnSecond()
+            }
         }))
         alert.addAction(UIAlertAction(title: "Double", style: .default, handler: { action in
             print("DOUBLE")
