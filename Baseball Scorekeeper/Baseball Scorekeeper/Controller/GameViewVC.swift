@@ -60,8 +60,8 @@ class GameViewVC: UIViewController {
         
         self.view.addSubview(scoreBoard)
         scoreBoard.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor).isActive = true
-        scoreBoard.widthAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.widthAnchor, multiplier: 1.0).isActive = true
-        scoreBoard.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        scoreBoard.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
+        scoreBoard.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
         scoreBoard.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.15).isActive = true
         
     }
@@ -69,8 +69,8 @@ class GameViewVC: UIViewController {
     func setupStatBoard() {
         self.view.addSubview(statBoard)
         statBoard.topAnchor.constraint(equalTo: scoreBoard.bottomAnchor, constant: 1.0).isActive = true
-        statBoard.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 15).isActive = true
-        statBoard.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -15).isActive = true
+        statBoard.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 25).isActive = true
+        statBoard.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -25).isActive = true
         statBoard.heightAnchor.constraint(equalToConstant: 20).isActive = true
     }
     
