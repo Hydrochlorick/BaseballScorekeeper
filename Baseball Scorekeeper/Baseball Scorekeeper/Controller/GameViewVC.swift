@@ -101,12 +101,33 @@ class GameViewVC: UIViewController {
             diamondBanana.bottomAnchor.constraint(equalTo: buttonStack.topAnchor, constant: 5)
         ])
         
-        diamondBanana.addSubview(firstBaseBanana)
-        NSLayoutConstraint.activate([
-            firstBaseBanana.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor)
-        ])
-        diamondBanana.addSubview(secondBaseBanana)
-        diamondBanana.addSubview(thirdBaseBanana)
+//        diamondBanana.addSubview(firstBaseBanana)
+//        NSLayoutConstraint.activate([
+//            firstBaseBanana.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor)
+//        ])
+//        diamondBanana.addSubview(secondBaseBanana)
+//        diamondBanana.addSubview(thirdBaseBanana)
+    }
+    
+    func clearDiamondSubviews() {
+        diamondBanana.subviews.forEach{ (item) in
+            item.removeFromSuperview()
+        }
+    }
+    
+    func changeDiamondImage() {
+        clearDiamondSubviews()
+        
+        if gameState.firstBase{
+            diamondBanana.addSubview(firstBaseBanana)
+        }
+        if gameState.secondBase{
+            diamondBanana.addSubview(secondBaseBanana)
+        }
+        if gameState.thirdBase{
+            diamondBanana.addSubview(thirdBaseBanana)
+        }
+        
     }
     
     func updateBoards() {
@@ -217,6 +238,7 @@ class GameViewVC: UIViewController {
                 self.gameState.firstBase = false
                 self.gameState.secondBase = true
                 self.setBatter(hit: hit)
+                self.changeDiamondImage()
             }))
             
             firstAlert.addAction(UIAlertAction(title: "To Third!", style: .default, handler: { action in
@@ -224,6 +246,7 @@ class GameViewVC: UIViewController {
                 self.gameState.firstBase = false
                 self.gameState.thirdBase = true
                 self.setBatter(hit: hit)
+                self.changeDiamondImage()
             }))
             
             firstAlert.addAction(UIAlertAction(title: "To Home!", style: .default, handler: { action in
@@ -231,6 +254,7 @@ class GameViewVC: UIViewController {
                 self.gameState.firstBase = false
                 self.updateScore()
                 self.setBatter(hit: hit)
+                self.changeDiamondImage()
             }))
             
             firstAlert.addAction(UIAlertAction(title: "They're Out!", style: .destructive, handler: { action in
@@ -238,9 +262,13 @@ class GameViewVC: UIViewController {
                 self.gameState.firstBase = false
                 self.yerOut()
                 self.setBatter(hit: hit)
+                self.changeDiamondImage()
             }))
             self.present(firstAlert, animated: false, completion: nil)
-        } else {self.setBatter(hit: hit)}
+        } else {
+            self.setBatter(hit: hit)
+            self.changeDiamondImage()
+        }
     }
     
     func manOnSecond(hit: Int) {
@@ -308,6 +336,7 @@ class GameViewVC: UIViewController {
             }
             gameState.firstBase = true
             // update player at bat
+            changeDiamondImage()
         }
         updateBoards()
     }
