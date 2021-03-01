@@ -15,7 +15,8 @@ class AtBatStatBoardView: UIView {
         stackView.axis = .horizontal
         stackView.spacing = 5
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.distribution = .equalCentering
+        stackView.distribution = .equalSpacing
+//        stackView.backgroundColor = UIColor(named: "orangeRed")
         return stackView
     }()
     
@@ -33,23 +34,28 @@ class AtBatStatBoardView: UIView {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.spacing = 0
+        stackView.spacing = 5
+
+//        stackView.distribution = .equalSpacing
+//        stackView.backgroundColor = .blue
         return stackView
     }()
     let bLabel : UILabel = {
         let label = UILabel()
         label.textColor = UIColor(named: "offWhite")
-        label.font = UIFont(name: "Helvetica-Bold", size: 13)
+        label.font = UIFont(name: "Helvetica-Bold", size: 16)
         label.text = "B"
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
         return label
     }()
     let ballNumber : UILabel = {
         let label = UILabel()
         label.textColor = UIColor(named: "offWhite")
-        label.font = UIFont(name: "Helvetica-Bold", size: 13)
+        label.font = UIFont(name: "Helvetica-Bold", size: 16)
         label.text = "0"
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .left
         return label
     }()
     
@@ -59,23 +65,28 @@ class AtBatStatBoardView: UIView {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.distribution = .equalSpacing
+        stackView.spacing = 5
+
+//        stackView.distribution = .equalSpacing
+//        stackView.backgroundColor = .red
         return stackView
     }()
     let sLabel : UILabel = {
         let label = UILabel()
         label.textColor = UIColor(named: "offWhite")
-        label.font = UIFont(name: "Helvetica-Bold", size: 13)
+        label.font = UIFont(name: "Helvetica-Bold", size: 16)
         label.text = "S"
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .right
         return label
     }()
     let strikesNumber : UILabel = {
         let label = UILabel()
         label.textColor = UIColor(named: "offWhite")
-        label.font = UIFont(name: "Helvetica-Bold", size: 13)
+        label.font = UIFont(name: "Helvetica-Bold", size: 16)
         label.text = "0"
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .left
         return label
     }()
     
@@ -84,23 +95,27 @@ class AtBatStatBoardView: UIView {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.distribution = .equalSpacing
+        stackView.spacing = 5
+//        stackView.distribution = .equalSpacing
+//        stackView.backgroundColor = .brown
         return stackView
     }()
     let oLabel : UILabel = {
         let label = UILabel()
         label.textColor = UIColor(named: "offWhite")
-        label.font = UIFont(name: "Helvetica-Bold", size: 13)
+        label.font = UIFont(name: "Helvetica-Bold", size: 16)
         label.text = "O"
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .right
         return label
     }()
     let outsNumber : UILabel = {
         let label = UILabel()
         label.textColor = UIColor(named: "offWhite")
-        label.font = UIFont(name: "Helvetica-Bold", size: 13)
+        label.font = UIFont(name: "Helvetica-Bold", size: 16)
         label.text = "0"
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .left
         return label
     }()
     
@@ -128,20 +143,20 @@ class AtBatStatBoardView: UIView {
         
         // TODO: Figure out how to space stuff right on the AtBatStackBoard
         boardStack.addArrangedSubview(inningLabel)
-        inningLabel.widthAnchor.constraint(equalTo: boardStack.widthAnchor, multiplier: 0.22).isActive = true
+        inningLabel.widthAnchor.constraint(equalTo: boardStack.widthAnchor, multiplier: 0.4).isActive = true
         
         boardStack.addArrangedSubview(ballsStack)
-        ballsStack.widthAnchor.constraint(equalTo: boardStack.widthAnchor, multiplier: 0.22).isActive = true
+//        ballsStack.widthAnchor.constraint(equalTo: boardStack.widthAnchor, multiplier: 0.22).isActive = true
         ballsStack.addArrangedSubview(bLabel)
         ballsStack.addArrangedSubview(ballNumber)
         
         boardStack.addArrangedSubview(strikeStack)
-        strikeStack.widthAnchor.constraint(equalTo: boardStack.widthAnchor, multiplier: 0.22).isActive = true
+//        strikeStack.widthAnchor.constraint(equalTo: boardStack.widthAnchor, multiplier: 0.22).isActive = true
         strikeStack.addArrangedSubview(sLabel)
         strikeStack.addArrangedSubview(strikesNumber)
         
         boardStack.addArrangedSubview(outStack)
-        outStack.widthAnchor.constraint(equalTo: boardStack.widthAnchor, multiplier: 0.22).isActive = true
+//        outStack.widthAnchor.constraint(equalTo: boardStack.widthAnchor, multiplier: 0.22).isActive = true
         outStack.addArrangedSubview(oLabel)
         outStack.addArrangedSubview(outsNumber)
         
