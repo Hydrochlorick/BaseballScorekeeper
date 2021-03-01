@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		50209F1F25EB3DB2002C5C65 /* AtBatStatBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50209F1E25EB3DB2002C5C65 /* AtBatStatBoardView.swift */; };
+		50209F2425EC2EA9002C5C65 /* ButtonStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50209F2325EC2EA9002C5C65 /* ButtonStackView.swift */; };
 		502EE47F25D9ABCA00796759 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502EE47E25D9ABCA00796759 /* TabBarVC.swift */; };
 		502EE48325D9ACA600796759 /* GameViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502EE48225D9ACA600796759 /* GameViewVC.swift */; };
 		502EE48625DA294F00796759 /* ScoreboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502EE48525DA294F00796759 /* ScoreboardView.swift */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		50209F1E25EB3DB2002C5C65 /* AtBatStatBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtBatStatBoardView.swift; sourceTree = "<group>"; };
+		50209F2325EC2EA9002C5C65 /* ButtonStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStackView.swift; sourceTree = "<group>"; };
 		502EE47E25D9ABCA00796759 /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
 		502EE48225D9ACA600796759 /* GameViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewVC.swift; sourceTree = "<group>"; };
 		502EE48525DA294F00796759 /* ScoreboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardView.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				502EE48525DA294F00796759 /* ScoreboardView.swift */,
 				50209F1E25EB3DB2002C5C65 /* AtBatStatBoardView.swift */,
 				503B8AE225DB3A70000A941F /* RecordCell.swift */,
+				50209F2325EC2EA9002C5C65 /* ButtonStackView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 				502EE48C25DA9C0300796759 /* Team.swift in Sources */,
 				502EE48925DA973200796759 /* Player.swift in Sources */,
 				502EE49025DAA31500796759 /* GameState.swift in Sources */,
+				50209F2425EC2EA9002C5C65 /* ButtonStackView.swift in Sources */,
 				502EE48625DA294F00796759 /* ScoreboardView.swift in Sources */,
 				502EE48325D9ACA600796759 /* GameViewVC.swift in Sources */,
 			);
