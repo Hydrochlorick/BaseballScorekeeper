@@ -24,7 +24,7 @@ class AtBatStatBoardView: UIView {
     let inningLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor(named: "offWhite")
-        label.text = "Fifth"
+        label.text = "Top of the 1st"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

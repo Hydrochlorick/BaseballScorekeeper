@@ -89,11 +89,31 @@ class GameViewVC: UIViewController {
         // We need to update what inning is happening, perhaps in updateBoards()?
         // Set the current teams at bat score to red color? to indicate?
         
-//        if gameState.inning % 2 == 0 {
-//            var myString = "Bottom \(gameState.inning/2)"
-//        } else {
-//            var myString = "Top"
-//        }
+        var placeHolder = (gameState.inning / 2)
+        if gameState.inning % 2 == 0 {
+            print("\(placeHolder)")
+        } else {
+            placeHolder += 1
+            print("\(placeHolder)")
+        }
+        
+        var stTH = "st"
+        
+        if placeHolder == 1 {
+            stTH = "st"
+        } else if placeHolder == 2 {
+            stTH = "nd"
+        } else if placeHolder == 3 {
+            stTH = "rd"
+        } else {
+            stTH = "th"
+        }
+        
+        if gameState.inning % 2 == 0 {
+            statBoard.inningLabel.text = "Bottom of the \(placeHolder)\(stTH)"
+        } else {
+            statBoard.inningLabel.text = "Top of the \(placeHolder)\(stTH)"
+        }
         
         updateBoards()
         
@@ -143,28 +163,28 @@ class GameViewVC: UIViewController {
             firstAlert.addAction(UIAlertAction(title: "Still on First", style: .default, handler:nil))
             
             firstAlert.addAction(UIAlertAction(title: "To Second!", style: .default, handler: { action in
-                print("Setting firstbase to false because To Second was pressed")
+                // print("Setting firstbase to false because To Second was pressed")
                 self.gameState.firstBase = false
                 self.gameState.secondBase = true
                 self.setBatter(hit: hit)
             }))
             
             firstAlert.addAction(UIAlertAction(title: "To Third!", style: .default, handler: { action in
-                print("Setting firstbase to false because To Third was pressed")
+                // print("Setting firstbase to false because To Third was pressed")
                 self.gameState.firstBase = false
                 self.gameState.thirdBase = true
                 self.setBatter(hit: hit)
             }))
             
             firstAlert.addAction(UIAlertAction(title: "To Home!", style: .default, handler: { action in
-                print("Setting firstbase to false because To Home was pressed")
+                // print("Setting firstbase to false because To Home was pressed")
                 self.gameState.firstBase = false
                 self.updateScore()
                 self.setBatter(hit: hit)
             }))
             
             firstAlert.addAction(UIAlertAction(title: "They're Out!", style: .destructive, handler: { action in
-                print("Seting first base to false because theyre out was pressed")
+                // print("Seting first base to false because theyre out was pressed")
                 self.gameState.firstBase = false
                 self.yerOut()
                 self.setBatter(hit: hit)
