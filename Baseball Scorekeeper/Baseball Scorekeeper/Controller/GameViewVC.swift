@@ -114,12 +114,16 @@ class GameViewVC: UIViewController {
         
         if gameState.firstBase{
             diamondBanana.addSubview(firstBaseBanana)
+            firstBaseBanana.trailingAnchor.constraint(equalTo: diamondBanana.trailingAnchor).isActive = true
+            firstBaseBanana.centerYAnchor.constraint(equalTo: diamondBanana.centerYAnchor, constant: -5.0).isActive = true
         }
         if gameState.secondBase{
             diamondBanana.addSubview(secondBaseBanana)
+            secondBaseBanana.centerXAnchor.constraint(equalTo: diamondBanana.centerXAnchor).isActive = true
         }
         if gameState.thirdBase{
             diamondBanana.addSubview(thirdBaseBanana)
+            thirdBaseBanana.centerYAnchor.constraint(equalTo: diamondBanana.centerYAnchor, constant: -4.0).isActive = true
         }
         
     }
@@ -175,16 +179,18 @@ class GameViewVC: UIViewController {
         }
         
         if gameState.inning % 2 == 0 {
-            statBoard.inningLabel.text = "Bottom of the \(placeHolder)\(stTH)"
+            statBoard.inningLabel.text = "Bottom \(placeHolder)\(stTH)"
             scoreBoard.homeScore.textColor = UIColor(named: "orangeRed")
             scoreBoard.awayScore.textColor = UIColor(named: "offWhite")
         } else {
-            statBoard.inningLabel.text = "Top of the \(placeHolder)\(stTH)"
+            statBoard.inningLabel.text = "Top \(placeHolder)\(stTH)"
             scoreBoard.awayScore.textColor = UIColor(named: "orangeRed")
             scoreBoard.homeScore.textColor = UIColor(named: "offWhite")
         }
         
         updateBoards()
+        clearBases()
+        clearDiamondSubviews()
         
         if gameState.inning > 19 {
             // Game over (we also need to check if the team won in the top of the 9th, ie more score when batting second)
