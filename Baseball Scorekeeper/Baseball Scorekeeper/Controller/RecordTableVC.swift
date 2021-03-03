@@ -16,7 +16,7 @@ class RecordTableVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         return table
     }()
     
-    let alienArray = [String](repeating: "👽 invading  🌎", count: 100)
+    let matchHistoryArray = [String](repeating: "MATCH HISTORY STUFF", count: 20)
     
     // Put the pieces together
     override func viewDidLoad() {
@@ -39,12 +39,12 @@ class RecordTableVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     // Stuff for UITableView Delegate and DataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return alienArray.count
+        return matchHistoryArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecordCell", for: indexPath)
-        cell.textLabel?.text = "\(indexPath.row) \(alienArray[indexPath.row])"
+        cell.textLabel?.text = "\(indexPath.row) \(matchHistoryArray[indexPath.row])"
         return cell
     }
     

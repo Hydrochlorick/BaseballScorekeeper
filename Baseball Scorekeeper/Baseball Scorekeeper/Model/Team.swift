@@ -8,5 +8,5 @@
 import Foundation
 
 struct Team {
-    
+    //TODO: SOMETHING WITH THIS
 }

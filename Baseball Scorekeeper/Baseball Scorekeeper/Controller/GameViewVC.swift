@@ -315,7 +315,7 @@ class GameViewVC: UIViewController {
                 self.manOnSecond(hit: hit)
             }))
             
-            thirdAlert.addAction(UIAlertAction(title: "They're out", style: .default, handler: { action in
+            thirdAlert.addAction(UIAlertAction(title: "They're out", style: .destructive, handler: { action in
                 self.gameState.thirdBase = false
                 self.yerOut()
                 self.manOnSecond(hit: hit)
