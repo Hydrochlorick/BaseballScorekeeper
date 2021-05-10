@@ -35,7 +35,6 @@ class AtBatStatBoardView: UIView {
         stackView.axis = .horizontal
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.spacing = 5
-
 //        stackView.distribution = .equalSpacing
 //        stackView.backgroundColor = .blue
         return stackView
@@ -66,7 +65,6 @@ class AtBatStatBoardView: UIView {
         stackView.axis = .horizontal
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.spacing = 5
-
 //        stackView.distribution = .equalSpacing
 //        stackView.backgroundColor = .red
         return stackView
