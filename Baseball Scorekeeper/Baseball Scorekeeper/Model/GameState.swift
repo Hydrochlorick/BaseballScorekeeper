@@ -35,4 +35,14 @@ class GameState {
         self.balls = 0
         self.strikes = 0
     }
+    
+    func setBatter(hit: Int) {
+        if hit == 1 {
+            self.firstBase = true
+        } else if hit == 2 {
+            self.secondBase = true
+        } else if hit == 3 {
+            self.thirdBase = true
+        }
+    }
 }

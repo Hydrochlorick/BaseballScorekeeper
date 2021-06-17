@@ -199,7 +199,6 @@ class GameViewVC: UIViewController {
         updateBoards()
     }
     
-    
     func updateScore(score: Int = 1) {
         if gameState.inning % 2 == 0 {
             gameState.homeScore += score
@@ -209,17 +208,6 @@ class GameViewVC: UIViewController {
             updateBoards()
         }
     }
-    
-    func setBatter(hit: Int) {
-        if hit == 1 {
-            gameState.firstBase = true
-        } else if hit == 2 {
-            gameState.secondBase = true
-        } else if hit == 3 {
-            gameState.thirdBase = true
-        }
-    }
-    
     
     func manOnFirst(hit: Int) {
         // check if someone is on first
@@ -232,7 +220,7 @@ class GameViewVC: UIViewController {
                 // print("Setting firstbase to false because To Second was pressed")
                 self.gameState.firstBase = false
                 self.gameState.secondBase = true
-                self.setBatter(hit: hit)
+                self.gameState.setBatter(hit: hit)
                 self.changeDiamondImage()
             }))
             
@@ -240,7 +228,7 @@ class GameViewVC: UIViewController {
                 // print("Setting firstbase to false because To Third was pressed")
                 self.gameState.firstBase = false
                 self.gameState.thirdBase = true
-                self.setBatter(hit: hit)
+                self.gameState.setBatter(hit: hit)
                 self.changeDiamondImage()
             }))
             
@@ -248,7 +236,7 @@ class GameViewVC: UIViewController {
                 // print("Setting firstbase to false because To Home was pressed")
                 self.gameState.firstBase = false
                 self.updateScore()
-                self.setBatter(hit: hit)
+                self.gameState.setBatter(hit: hit)
                 self.changeDiamondImage()
             }))
             
@@ -256,12 +244,12 @@ class GameViewVC: UIViewController {
                 // print("Seting first base to false because theyre out was pressed")
                 self.gameState.firstBase = false
                 self.runnerOut()
-                self.setBatter(hit: hit)
+                self.gameState.setBatter(hit: hit)
                 self.changeDiamondImage()
             }))
             self.present(firstAlert, animated: false, completion: nil)
         } else {
-            self.setBatter(hit: hit)
+            self.gameState.setBatter(hit: hit)
             self.changeDiamondImage()
         }
     }
