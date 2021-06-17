@@ -13,7 +13,7 @@ class GameViewVC: UIViewController {
     let statBoard = AtBatStatBoardView()
     let buttonStack = ButtonStackView()
     
-    let diamondBanana: UIImageView = {
+    let diamondView: UIImageView = {
         let diamondImage = UIImageView()
         diamondImage.translatesAutoresizingMaskIntoConstraints = false
         diamondImage.contentMode = .scaleAspectFit
@@ -21,7 +21,7 @@ class GameViewVC: UIViewController {
         return diamondImage
     }()
     
-    let firstBaseBanana: UIImageView = {
+    let firstBaseView: UIImageView = {
         let diamondImage = UIImageView()
         diamondImage.translatesAutoresizingMaskIntoConstraints = false
         diamondImage.contentMode = .scaleAspectFit
@@ -29,7 +29,7 @@ class GameViewVC: UIViewController {
         return diamondImage
     }()
     
-    let secondBaseBanana: UIImageView = {
+    let secondBaseView: UIImageView = {
         let diamondImage = UIImageView()
         diamondImage.translatesAutoresizingMaskIntoConstraints = false
         diamondImage.contentMode = .scaleAspectFit
@@ -37,7 +37,7 @@ class GameViewVC: UIViewController {
         return diamondImage
     }()
     
-    let thirdBaseBanana: UIImageView = {
+    let thirdBaseView: UIImageView = {
         let diamondImage = UIImageView()
         diamondImage.translatesAutoresizingMaskIntoConstraints = false
         diamondImage.contentMode = .scaleAspectFit
@@ -45,7 +45,7 @@ class GameViewVC: UIViewController {
         return diamondImage
     }()
 
-    var gameState = GameState()
+    var gameState = GameState.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,18 +93,18 @@ class GameViewVC: UIViewController {
     }
     
     func setupDiamondImage() {
-        self.view.addSubview(diamondBanana)
+        self.view.addSubview(diamondView)
         
         NSLayoutConstraint.activate([
-            diamondBanana.widthAnchor.constraint(equalTo: self.view.layoutMarginsGuide.widthAnchor, multiplier: 1.0),
-            diamondBanana.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor),
-            diamondBanana.bottomAnchor.constraint(equalTo: buttonStack.topAnchor, constant: 5)
+            diamondView.widthAnchor.constraint(equalTo: self.view.layoutMarginsGuide.widthAnchor, multiplier: 1.0),
+            diamondView.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor),
+            diamondView.bottomAnchor.constraint(equalTo: buttonStack.topAnchor, constant: 5)
         ])
         
     }
     
     func clearDiamondSubviews() {
-        diamondBanana.subviews.forEach{ (item) in
+        diamondView.subviews.forEach{ (item) in
             item.removeFromSuperview()
         }
     }
@@ -113,17 +113,17 @@ class GameViewVC: UIViewController {
         clearDiamondSubviews()
         
         if gameState.firstBase{
-            diamondBanana.addSubview(firstBaseBanana)
-            firstBaseBanana.trailingAnchor.constraint(equalTo: diamondBanana.trailingAnchor).isActive = true
-            firstBaseBanana.centerYAnchor.constraint(equalTo: diamondBanana.centerYAnchor, constant: -5.0).isActive = true
+            diamondView.addSubview(firstBaseView)
+            firstBaseView.trailingAnchor.constraint(equalTo: diamondView.trailingAnchor).isActive = true
+            firstBaseView.centerYAnchor.constraint(equalTo: diamondView.centerYAnchor, constant: -5.0).isActive = true
         }
         if gameState.secondBase{
-            diamondBanana.addSubview(secondBaseBanana)
-            secondBaseBanana.centerXAnchor.constraint(equalTo: diamondBanana.centerXAnchor).isActive = true
+            diamondView.addSubview(secondBaseView)
+            secondBaseView.centerXAnchor.constraint(equalTo: diamondView.centerXAnchor).isActive = true
         }
         if gameState.thirdBase{
-            diamondBanana.addSubview(thirdBaseBanana)
-            thirdBaseBanana.centerYAnchor.constraint(equalTo: diamondBanana.centerYAnchor, constant: -4.0).isActive = true
+            diamondView.addSubview(thirdBaseView)
+            thirdBaseView.centerYAnchor.constraint(equalTo: diamondView.centerYAnchor, constant: -4.0).isActive = true
         }
         
     }
@@ -138,21 +138,10 @@ class GameViewVC: UIViewController {
         print("First Base:\(gameState.firstBase) Second Base: \(gameState.secondBase) Third Base: \(gameState.thirdBase)")
     }
     
-    func resetAtBat() {
-        gameState.balls = 0
-        gameState.strikes = 0
-        updateBoards()
-    }
-    
-    func clearBases() {
-        gameState.firstBase = false
-        gameState.secondBase = false
-        gameState.thirdBase = false
-    }
-    
+
     func updateInnings() {
         gameState.inning += 1
-        clearBases()
+        gameState.clearBases()
         print("Current inning: \(gameState.inning)")
         
         // We need to update what inning is happening, perhaps in updateBoards()?
@@ -189,7 +178,7 @@ class GameViewVC: UIViewController {
         }
         
         updateBoards()
-        clearBases()
+        gameState.clearBases()
         clearDiamondSubviews()
         
         if gameState.inning > 19 {
@@ -197,11 +186,13 @@ class GameViewVC: UIViewController {
         }
     }
     
-    func yerOut() {
+    func runnerOut() {
         gameState.outs += 1
+        gameState.resetAtBat()
         
         if gameState.outs == 3 {
             gameState.outs = 0
+            gameState.clearBases()
             updateInnings()
             // Switch sides
         }
@@ -226,7 +217,7 @@ class GameViewVC: UIViewController {
             gameState.secondBase = true
         } else if hit == 3 {
             gameState.thirdBase = true
-        } else {}
+        }
     }
     
     
@@ -264,7 +255,7 @@ class GameViewVC: UIViewController {
             firstAlert.addAction(UIAlertAction(title: "They're Out!", style: .destructive, handler: { action in
                 // print("Seting first base to false because theyre out was pressed")
                 self.gameState.firstBase = false
-                self.yerOut()
+                self.runnerOut()
                 self.setBatter(hit: hit)
                 self.changeDiamondImage()
             }))
@@ -294,7 +285,7 @@ class GameViewVC: UIViewController {
             }))
             secondAlert.addAction(UIAlertAction(title: "They're out!", style: .destructive, handler: {action in
                 self.gameState.secondBase = false
-                self.yerOut()
+                self.runnerOut()
                 self.manOnFirst(hit: hit)
             }))
             
@@ -317,7 +308,7 @@ class GameViewVC: UIViewController {
             
             thirdAlert.addAction(UIAlertAction(title: "They're out", style: .destructive, handler: { action in
                 self.gameState.thirdBase = false
-                self.yerOut()
+                self.runnerOut()
                 self.manOnSecond(hit: hit)
             }))
             self.present(thirdAlert, animated: false, completion: nil)
@@ -328,7 +319,7 @@ class GameViewVC: UIViewController {
     @objc func ballAction() {
         gameState.balls += 1
         if gameState.balls == 4 {
-            resetAtBat()
+            gameState.resetAtBat()
             if gameState.firstBase {
                 if gameState.secondBase {
                     if gameState.thirdBase {
@@ -348,8 +339,8 @@ class GameViewVC: UIViewController {
     @objc func strikeAction() {
         gameState.strikes += 1
         if gameState.strikes == 3 {
-            yerOut()
-            resetAtBat()
+            runnerOut()
+            gameState.resetAtBat()
         }
         updateBoards()
     }
@@ -365,7 +356,7 @@ class GameViewVC: UIViewController {
     }
     
     @objc func outAction() {
-        yerOut()
+        runnerOut()
     }
     
     
@@ -390,7 +381,8 @@ class GameViewVC: UIViewController {
             self.updateScore()
         }))
         self.present(alert, animated: false, completion: nil)
-        resetAtBat()
+        gameState.resetAtBat()
+        updateBoards()
     }
 
 }

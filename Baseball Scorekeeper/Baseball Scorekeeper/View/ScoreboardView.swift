@@ -54,6 +54,15 @@ class ScoreboardView: UIView {
         return awayLabel
     }()
     
+    let dashLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = UIColor(named: "offWhite")
+        label.font = UIFont(name: "Helvetica-Bold", size: 30)
+        label.text = "-"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -76,6 +85,7 @@ class ScoreboardView: UIView {
         
         scoreboardStack.addArrangedSubview(homeLabel)
         scoreboardStack.addArrangedSubview(homeScore)
+//        scoreboardStack.addArrangedSubview(dashLabel)
         scoreboardStack.addArrangedSubview(awayScore)
         scoreboardStack.addArrangedSubview(awayLabel)
     }

@@ -7,7 +7,9 @@
 
 import Foundation
 
-struct GameState {
+class GameState {
+    static let shared = GameState()
+    
     var inning: Int = 1
     var balls: Int = 0
     var strikes: Int = 0
@@ -23,4 +25,14 @@ struct GameState {
     
     var homeatBat: Bool = false
 
+    func clearBases() {
+        self.firstBase = false
+        self.secondBase = false
+        self.thirdBase = false
+    }
+    
+    func resetAtBat() {
+        self.balls = 0
+        self.strikes = 0
+    }
 }
